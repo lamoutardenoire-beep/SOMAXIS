@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOMAXIS | Accompagnement Sur-Mesure</title>
+    <style>
+        :root {
+            --bg-color: #0b0b0b;
+            --text-color: #f3f3f3;
+            --muted-color: #999999;
+            --accent-color: #c5a880;
+            --card-bg: #141414;
+            --border-color: #222222;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .btn-header {
+            background: transparent;
+            color: var(--text-color);
+            border: 1px solid var(--accent-color);
+            padding: 0.6rem 1.2rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-header:hover {
+            background: var(--accent-color);
+            color: var(--bg-color);
+        }
+
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 5%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--muted-color);
+            max-width: 700px;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn-primary {
+            background: var(--text-color);
+            color: var(--bg-color);
+            padding: 1rem 2.5rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: transform 0.2s ease, background 0.2s ease;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        section {
+            padding: 6rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 4rem;
+        }
+
+        .grid-filters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 3rem 2rem;
+            border-radius: 6px;
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        .card ul {
+            list-style: none;
+        }
+
+        .card li {
+            color: var(--muted-color);
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .card li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .step-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2.5rem 2rem;
+            border-radius: 6px;
+        }
+
+        .step-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .step-card h3 {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .step-card p {
+            color: var(--muted-color);
+            font-size: 0.95rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 4rem 5%;
+            color: var(--muted-color);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 70vh;
+            }
+            section {
+                padding: 4rem 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">SOMA<span>XIS</span></div>
+        <a href="#candidature" class="btn-header">Postuler</a>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Discipline. Précision. Résultats.</h1>
+            <p>Entraîneur certifié depuis 2013 à Montréal & En Ligne. Un protocole biomécanique sur-mesure pour les professionnels et entrepreneurs exigeants.</p>
+            <a href="#candidature" class="btn-primary">Postuler pour un entretien</a>
+        </section>
+
+        <section>
+            <h2 class="section-title">Le Filtre de Sélection</h2>
+            <div class="grid-filters">
+                <div class="card">
+                    <h3>Ce programme est pour vous si :</h3>
+                    <ul>
+                        <li>Vous exigez une structure rigoureuse et un suivi chirurgical.</li>
+                        <li>Vous voulez un cadre scientifique et des résultats mesurables.</li>
+                        <li>Vous êtes prêt à vous engager pleinement dans votre transformation.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Ce programme n'est PAS pour vous si :</h3>
+                    <ul>
+                        <li>Vous cherchez des solutions magiques sans effort ni implication.</li>
+                        <li>Vous préférez les programmes génériques et le hasard.</li>
+                        <li>Vous n'êtes pas prêt à investir dans votre santé et votre performance.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Le Protocole en 3 Temps</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">01</div>
+                    <h3>Audit & Évaluation</h3>
+                    <p>Analyse biomécanique approfondie, étude de votre posture et de votre mode de vie pour identifier vos points de blocage.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">02</div>
+                    <h3>Programmation</h3>
+                    <p>Ajustement millimétré des charges, des volumes d'entraînement et de la nutrition sans privation absurde.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">03</div>
+                    <h3>Suivi & Accountability</h3>
+                    <p>Points d'étape constants et rigoureux pour garantir l'exécution et éliminer les points de rupture au quotidien.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="candidature">
+        <p>&copy; 2026 Somaxis. Tous droits réservés.</p>
+    </footer>
+
+</body>
+</html>
