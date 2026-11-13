@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOMAXIS | Entraîneur Certifié à Montréal</title>
+    <title>SOMAXIS | Montréal & En Ligne</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #0b0b0b;
-            --text-color: #f3f3f3;
-            --muted-color: #999999;
-            --accent-color: #c5a880;
-            --card-bg: #141414;
-            --border-color: #222222;
+            --bg-paper: #F6F5F0;
+            --bg-card: #FFFFFF;
+            --bg-dark: #141413;
+            --text-main: #141413;
+            --text-muted: #5A5854;
+            --accent: #8C6D46;
+            --border-light: #DFDCD4;
         }
 
         * {
@@ -20,200 +24,461 @@
             padding: 0;
         }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            overflow-x: hidden;
+        html {
+            scroll-behavior: smooth;
         }
 
+        body {
+            background-color: var(--bg-paper);
+            color: var(--text-main);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, .serif {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-weight: 700;
+            line-height: 1.12;
+        }
+
+        /* Header minimaliste fixe sans menu */
         header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(246, 245, 240, 0.92);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border-light);
+            padding: 1.1rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 2rem 5%;
-            max-width: 1400px;
-            margin: 0 auto;
         }
 
         .logo {
-            font-size: 1.25rem;
-            font-weight: 700;
-            letter-spacing: 0.2em;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.28em;
             text-transform: uppercase;
+            color: var(--text-main);
         }
 
         .logo span {
-            color: var(--accent-color);
+            color: var(--accent);
         }
 
-        .btn-header {
-            background: transparent;
-            color: var(--text-color);
-            border: 1px solid var(--accent-color);
-            padding: 0.6rem 1.2rem;
-            font-size: 0.85rem;
+        .btn-nav {
+            background: var(--bg-dark);
+            color: var(--bg-paper);
+            padding: 0.55rem 1.2rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            cursor: pointer;
-            transition: all 0.3s ease;
             text-decoration: none;
+            transition: background 0.2s ease;
         }
 
-        .btn-header:hover {
-            background: var(--accent-color);
-            color: var(--bg-color);
+        .btn-nav:hover {
+            background: var(--accent);
         }
 
-        .hero {
-            min-height: 80vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 5%;
-            max-width: 1000px;
+        /* Conteneur principal */
+        .container {
+            max-width: 1080px;
             margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* Hero Éditorial */
+        .hero {
+            padding: 5.5rem 0 4.5rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .eyebrow {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
         }
 
         .hero h1 {
-            font-size: clamp(2.2rem, 5vw, 4rem);
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
+            font-size: clamp(2.6rem, 6vw, 4.6rem);
+            color: var(--text-main);
+            max-width: 880px;
+            margin-bottom: 1.8rem;
+            letter-spacing: -0.01em;
         }
 
-        .hero p {
-            font-size: clamp(1rem, 2vw, 1.25rem);
-            color: var(--muted-color);
-            max-width: 700px;
+        .hero h1 em {
+            font-style: italic;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .hero-sub {
+            font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+            color: var(--text-muted);
+            max-width: 640px;
+            font-weight: 300;
             margin-bottom: 2.5rem;
         }
 
         .btn-primary {
-            background: var(--text-color);
-            color: var(--bg-color);
-            padding: 1rem 2.5rem;
-            font-size: 0.95rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            text-decoration: none;
-            border-radius: 4px;
-            transition: transform 0.2s ease, background 0.2s ease;
             display: inline-block;
+            background: var(--bg-dark);
+            color: var(--bg-paper);
+            padding: 1.1rem 2.2rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: 1px solid var(--bg-dark);
+            transition: all 0.25s ease;
         }
 
         .btn-primary:hover {
-            background: var(--accent-color);
-            transform: translateY(-2px);
+            background: transparent;
+            color: var(--text-main);
         }
 
+        /* Sections générales */
         section {
-            padding: 6rem 5%;
-            max-width: 1200px;
-            margin: 0 auto;
+            padding: 5rem 0;
+            border-bottom: 1px solid var(--border-light);
         }
 
-        .section-title {
-            text-align: center;
-            font-size: 1.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 4rem;
+        .section-header {
+            margin-bottom: 3.5rem;
         }
 
-        .grid-filters {
+        .section-header h2 {
+            font-size: clamp(2rem, 4.5vw, 3.2rem);
+            margin-top: 0.5rem;
+            max-width: 720px;
+        }
+
+        /* Bento Grid Asymétrique - Le Constat */
+        .bento-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+        }
+
+        .bento-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            padding: 2.2rem;
+        }
+
+        .bento-large {
+            grid-column: span 7;
+        }
+
+        .bento-medium {
+            grid-column: span 5;
+        }
+
+        .bento-full {
+            grid-column: span 12;
+            background: var(--bg-dark);
+            color: var(--bg-paper);
+        }
+
+        .bento-full .bento-tag {
+            color: #C9A978;
+        }
+
+        .bento-full p {
+            color: #D4D2CC;
+        }
+
+        .bento-tag {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        .bento-card h3 {
+            font-size: 1.7rem;
+            margin-bottom: 1rem;
+        }
+
+        .bento-card p {
+            color: var(--text-muted);
+            font-size: 0.98rem;
+            font-weight: 300;
+        }
+
+        /* Tableau Comparatif Éditorial */
+        .diff-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .diff-table th {
+            text-align: left;
+            padding: 1.2rem 1rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            border-bottom: 2px solid var(--text-main);
+            color: var(--text-muted);
+        }
+
+        .diff-table th:last-child {
+            color: var(--text-main);
+        }
+
+        .diff-table td {
+            padding: 1.5rem 1rem;
+            border-bottom: 1px solid var(--border-light);
+            vertical-align: top;
+            font-size: 0.98rem;
+        }
+
+        .diff-table td:first-child {
+            color: var(--text-muted);
+            font-weight: 300;
+            width: 45%;
+        }
+
+        .diff-table td:last-child {
+            color: var(--text-main);
+            font-weight: 500;
+            width: 55%;
+        }
+
+        /* La Solution en 3 Temps */
+        .steps-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
         }
 
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 3rem 2rem;
-            border-radius: 6px;
+        .step-item {
+            border-top: 2px solid var(--text-main);
+            padding-top: 1.5rem;
         }
 
-        .card h3 {
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
+        .step-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .step-item h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .step-item p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+
+        /* Encadré Garantie */
+        .guarantee-box {
+            margin-top: 3.5rem;
+            padding: 2.5rem;
+            border: 1px solid var(--text-main);
+            background: var(--bg-card);
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .guarantee-box h3 {
+            font-size: 1.8rem;
+        }
+
+        .guarantee-box p {
+            color: var(--text-muted);
+            font-size: 0.98rem;
+        }
+
+        /* Filtre de sélection */
+        .filter-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .filter-col {
+            padding: 2.5rem;
+            border: 1px solid var(--border-light);
+            background: var(--bg-card);
+        }
+
+        .filter-col.no {
+            background: transparent;
+        }
+
+        .filter-col h3 {
+            font-size: 1.6rem;
             margin-bottom: 1.5rem;
-            color: var(--accent-color);
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-light);
         }
 
-        .card ul {
+        .filter-col ul {
             list-style: none;
         }
 
-        .card li {
-            color: var(--muted-color);
+        .filter-col li {
             margin-bottom: 1rem;
+            padding-left: 1.4rem;
             position: relative;
-            padding-left: 1.5rem;
+            font-size: 0.95rem;
+            color: var(--text-muted);
         }
 
-        .card li::before {
+        .filter-col li::before {
             content: "—";
             position: absolute;
             left: 0;
-            color: var(--accent-color);
+            color: var(--accent);
         }
 
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+        /* Formulaire de Candidature */
+        .form-wrapper {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            padding: 3rem 2.5rem;
+            max-width: 760px;
+            margin: 0 auto;
         }
 
-        .step-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 2.5rem 2rem;
-            border-radius: 6px;
+        .form-group {
+            margin-bottom: 1.8rem;
         }
 
-        .step-number {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--accent-color);
-            margin-bottom: 1rem;
+        .form-group label {
+            display: block;
+            font-size: 0.92rem;
+            font-weight: 500;
+            margin-bottom: 0.6rem;
+            color: var(--text-main);
         }
 
-        .step-card h3 {
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 1rem;
-        }
-
-        .step-card p {
-            color: var(--muted-color);
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border: 1px solid var(--border-light);
+            background: var(--bg-paper);
+            font-family: 'Inter', sans-serif;
             font-size: 0.95rem;
+            color: var(--text-main);
+            border-radius: 0;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--text-main);
+            background: #FFFFFF;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+            margin-top: 0.5rem;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.7rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 0.8rem;
+            border: 1px solid var(--border-light);
+            background: var(--bg-paper);
+        }
+
+        .radio-option input {
+            margin-top: 0.25rem;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--bg-dark);
+            color: var(--bg-paper);
+            padding: 1.2rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: background 0.25s ease;
+        }
+
+        .btn-submit:hover {
+            background: var(--accent);
+        }
+
+        #confirmation-msg {
+            display: none;
+            padding: 2rem;
+            background: var(--bg-paper);
+            border: 1px solid var(--text-main);
+            text-align: center;
+            margin-top: 1.5rem;
         }
 
         footer {
+            padding: 3.5rem 5%;
             text-align: center;
-            padding: 4rem 5%;
-            color: var(--muted-color);
-            font-size: 0.85rem;
-            border-top: 1px solid var(--border-color);
-            letter-spacing: 0.1em;
+            font-size: 0.78rem;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
+            color: var(--text-muted);
         }
 
+        /* Responsive Mobile */
         @media (max-width: 768px) {
             .hero {
-                min-height: 70vh;
+                padding: 3.5rem 0 3rem;
             }
             section {
-                padding: 4rem 5%;
+                padding: 3.5rem 0;
+            }
+            .bento-large, .bento-medium, .bento-full {
+                grid-column: span 12;
+            }
+            .steps-list, .filter-grid {
+                grid-template-columns: 1fr;
+            }
+            .diff-table th, .diff-table td {
+                padding: 1rem 0.6rem;
+                font-size: 0.88rem;
+            }
+            .form-wrapper {
+                padding: 2rem 1.3rem;
             }
         }
     </style>
@@ -222,62 +487,215 @@
 
     <header>
         <div class="logo">SOMA<span>XIS</span></div>
-        <a href="#candidature" class="btn-header">Postuler</a>
+        <a href="#candidature" class="btn-nav">Postuler</a>
     </header>
 
-    <main>
+    <main class="container">
+
+        <!-- HERO -->
         <section class="hero">
-            <h1>Discipline. Précision. Résultats.</h1>
-            <p>Entraîneur certifié depuis 2013 à Montréal & En Ligne. Un accompagnement sur-mesure pour les professionnels et entrepreneurs exigeants.</p>
-            <a href="#candidature" class="btn-primary">Postuler pour un entretien</a>
+            <span class="eyebrow">Montréal & En Ligne — Certifié depuis 2013</span>
+            <h1>Fini les excuses. Reprenez le contrôle de votre <em>énergie</em> et de votre physique.</h1>
+            <p class="hero-sub">Un cadre d'entraînement structuré et sur-mesure pour les hommes d'expérience et entrepreneurs exigeants qui veulent des résultats durables, sans perdre de temps avec le hasard.</p>
+            <a href="#candidature" class="btn-primary">Déposer ma candidature</a>
         </section>
 
+        <!-- LE CONSTAT (BENTO GRID) -->
         <section>
-            <h2 class="section-title">Le Filtre de Sélection</h2>
-            <div class="grid-filters">
-                <div class="card">
-                    <h3>Ce programme est pour vous si :</h3>
+            <div class="section-header">
+                <span class="eyebrow">01 — La Réalité</span>
+                <h2>Vous savez ce qu'il faut faire, mais vous trouvez toujours une raison d'arrêter.</h2>
+            </div>
+
+            <div class="bento-grid">
+                <div class="bento-card bento-large">
+                    <span class="bento-tag">Le cercle vicieux</span>
+                    <h3>Le surpoids et la baisse d'énergie s'installent</h3>
+                    <p>Avec les responsabilités, les semaines chargées et la fatigue accumulée, le tonus musculaire diminue. Vous sentez que votre condition physique commence à peser sur votre santé et votre quotidien.</p>
+                </div>
+
+                <div class="bento-card bento-medium">
+                    <span class="bento-tag">Le vrai blocage</span>
+                    <h3>L'illusion de « reprendre lundi »</h3>
+                    <p>Vous commencez avec de bonnes intentions, puis le travail ou les imprévus prennent le dessus. Sans cadre strict, l'abandon redevient la norme.</p>
+                </div>
+
+                <div class="bento-card bento-full">
+                    <span class="bento-tag">Ce qui manque</span>
+                    <h3>Vous n'avez pas besoin de plus de motivation. Vous avez besoin de directives claires.</h3>
+                    <p>La motivation disparaît dès la première semaine difficile. Seule une structure précise, pensée pour votre réalité et votre emploi du temps, garantit que vous irez au bout.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- DIFFÉRENCIATION -->
+        <section>
+            <div class="section-header">
+                <span class="eyebrow">02 — La Différence</span>
+                <h2>Pourquoi SOMAXIS n'a rien à voir avec un abonnement classique.</h2>
+            </div>
+
+            <table class="diff-table">
+                <thead>
+                    <tr>
+                        <th>L'approche classique en gym</th>
+                        <th>L'accompagnement SOMAXIS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Programmes standards copiés-collés sans tenir compte de votre âge ni de vos antécédents.</td>
+                        <td>Plan détaillé et personnalisé bâti autour de votre condition réelle et de vos contraintes.</td>
+                    </tr>
+                    <tr>
+                        <td>Vous êtes livré à vous-même dès que la motivation retombe.</td>
+                        <td>Directives claires et suivi rigoureux pour éliminer les excuses et maintenir le rythme.</td>
+                    </tr>
+                    <tr>
+                        <td>Promesses vagues sans engagement réel sur le résultat final.</td>
+                        <td>Résultats mesurables et garantie de remboursement intégral sous conditions d'exécution.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- LA SOLUTION EN 3 TEMPS -->
+        <section>
+            <div class="section-header">
+                <span class="eyebrow">03 — La Méthode</span>
+                <h2>Un plan d'action précis en 3 étapes.</h2>
+            </div>
+
+            <div class="steps-list">
+                <div class="step-item">
+                    <span class="step-num">I.</span>
+                    <h3>Bilan de départ</h3>
+                    <p>Évaluation complète de votre condition physique, de votre niveau d'énergie et de votre emploi du temps pour fixer un cap réaliste et exigeant.</p>
+                </div>
+                <div class="step-item">
+                    <span class="step-num">II.</span>
+                    <h3>Plan & Directives</h3>
+                    <p>Remise de votre feuille de route détaillée : entraînements ciblés et repères alimentaires simples, sans privation absurde.</p>
+                </div>
+                <div class="step-item">
+                    <span class="step-num">III.</span>
+                    <h3>Suivi & Exécution</h3>
+                    <p>Points de contrôle réguliers pour ajuster le plan, valider vos progrès et vous empêcher de décrocher.</p>
+                </div>
+            </div>
+
+            <div class="guarantee-box">
+                <span class="eyebrow" style="margin-bottom:0;">Engagement Mutuel</span>
+                <h3>Garantie de résultats sous conditions</h3>
+                <p>Si vous suivez les directives et appliquez le plan à la lettre sans obtenir les résultats convenus ensemble au départ, vous êtes intégralement remboursé. Pas d'ambiguïté : chacun assume sa part du contrat.</p>
+            </div>
+        </section>
+
+        <!-- FILTRE DE SÉLECTION -->
+        <section>
+            <div class="section-header">
+                <span class="eyebrow">04 — Pré-requis</span>
+                <h2>Cet accompagnement est strictement sélectif.</h2>
+            </div>
+
+            <div class="filter-grid">
+                <div class="filter-col">
+                    <h3>C'est pour vous si :</h3>
                     <ul>
-                        <li>Vous exigez une structure rigoureuse et un suivi personnalisé.</li>
-                        <li>Vous voulez un cadre clair et des résultats mesurables.</li>
-                        <li>Vous êtes prêt à vous engager pleinement dans votre transformation.</li>
+                        <li>Vous voulez perdre du poids, retrouver du tonus et protéger votre santé durablement.</li>
+                        <li>Vous cherchez un cadre strict et des directives claires plutôt que des conseils vagues.</li>
+                        <li>Vous êtes prêt à vous engager sérieusement sur les prochains mois.</li>
                     </ul>
                 </div>
-                <div class="card">
-                    <h3>Ce programme n'est PAS pour vous si :</h3>
+                <div class="filter-col no">
+                    <h3>Ce n'est PAS pour vous si :</h3>
                     <ul>
-                        <li>Vous cherchez des solutions magiques sans effort ni implication.</li>
-                        <li>Vous préférez les programmes génériques et le hasard.</li>
-                        <li>Vous n'êtes pas prêt à investir dans votre santé et votre performance.</li>
+                        <li>Vous cherchez une solution miracle sans effort ni discipline.</li>
+                        <li>Vous voulez juste quelques séances à la carte sans vrai suivi.</li>
+                        <li>Vous refusez de remettre en question vos habitudes actuelles.</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <section>
-            <h2 class="section-title">La Méthode en 3 Temps</h2>
-            <div class="steps-grid">
-                <div class="step-card">
-                    <div class="step-number">01</div>
-                    <h3>Bilan & Analyse</h3>
-                    <p>Étude approfondie de votre point de départ, de votre mode de vie et de vos habitudes pour identifier vos blocages.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">02</div>
-                    <h3>Plan d'Action</h3>
-                    <p>Mise en place d'un plan d'entraînement et d'une structure nutritionnelle adaptés à votre quotidien, sans privation absurde.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">03</div>
-                    <h3>Suivi & Ajustements</h3>
-                    <p>Points réguliers pour valider l'exécution, maintenir le cap et garantir des progrès constants sur le long terme.</p>
+        <!-- FORMULAIRE DE CANDIDATURE -->
+        <section id="candidature" style="border-bottom: none;">
+            <div class="section-header" style="text-align: center;">
+                <span class="eyebrow">05 — Sélection</span>
+                <h2 style="margin: 0.5rem auto 1rem;">Postuler pour un entretien</h2>
+                <p style="color: var(--text-muted); max-width: 580px; margin: 0 auto; font-weight: 300;">Les places sont limitées afin de garantir un suivi individuel rigoureux. Remplissez ce questionnaire pour vérifier votre éligibilité.</p>
+            </div>
+
+            <div class="form-wrapper">
+                <form id="somaxis-form" onsubmit="event.preventDefault(); document.getElementById('somaxis-form').style.display='none'; document.getElementById('confirmation-msg').style.display='block';">
+                    
+                    <div class="form-group">
+                        <label>1. Votre nom complet et votre ville (Montréal ou En ligne)</label>
+                        <input type="text" placeholder="Ex : Marc Tremblay — Montréal" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>2. Quel est votre secteur d'activité et à quoi ressemble votre semaine type ?</label>
+                        <input type="text" placeholder="Ex : Dirigeant PME, 50h/semaine, beaucoup de déplacements" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>3. Quel est le principal obstacle qui vous fait arrêter ou stagner aujourd'hui ?</label>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="obstacle" required>
+                                <span>Manque de structure et entraînement au hasard</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="obstacle">
+                                <span>Baisse d'énergie et fatigue liée au travail</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="obstacle">
+                                <span>Manque de cadre : je finis toujours par trouver une excuse pour arrêter</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>4. Êtes-vous prêt à investir le temps, la discipline et le budget d'un accompagnement privé haut de gamme ?</label>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="engagement" required>
+                                <span>Oui, je cherche un cadre strict et je suis prêt à m'investir pleinement</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="engagement">
+                                <span>Non, je cherche uniquement un tarif de groupe ou un programme basique</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>5. Pourquoi souhaitez-vous démarrer maintenant et quel résultat concret visez-vous d'ici 90 jours ?</label>
+                        <textarea rows="3" placeholder="Soyez direct et précis..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Votre adresse e-mail ou téléphone pour vous recontacter</label>
+                        <input type="text" placeholder="email@exemple.com / 514-000-0000" required>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Soumettre ma candidature</button>
+                </form>
+
+                <div id="confirmation-msg">
+                    <span class="eyebrow">Candidature enregistrée</span>
+                    <h3 class="serif" style="font-size: 2rem; margin-bottom: 0.8rem;">Votre dossier est en cours d'examen.</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Si votre profil correspond aux critères de l'accompagnement SOMAXIS, vous recevrez un message sous 24h pour planifier votre entretien de sélection.</p>
                 </div>
             </div>
         </section>
+
     </main>
 
-    <footer id="candidature">
-        <p>&copy; 2026 Somaxis. Tous droits réservés.</p>
+    <footer>
+        <p>&copy; 2026 SOMAXIS — Montréal & En Ligne. Tous droits réservés.</p>
     </footer>
 
 </body>
