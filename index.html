@@ -92,10 +92,18 @@
             padding: 0 5%;
         }
 
-        /* Hero Éditorial */
+        /* Hero Éditorial en 2 colonnes (Texte à gauche / Photo à droite) */
         .hero {
             padding: 5.5rem 0 4.5rem;
             border-bottom: 1px solid var(--border-light);
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 3.5rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            text-align: left;
         }
 
         .eyebrow {
@@ -109,9 +117,8 @@
         }
 
         .hero h1 {
-            font-size: clamp(2.6rem, 6vw, 4.6rem);
+            font-size: clamp(2.4rem, 4.8vw, 4.1rem);
             color: var(--text-main);
-            max-width: 880px;
             margin-bottom: 1.8rem;
             letter-spacing: -0.01em;
         }
@@ -123,11 +130,52 @@
         }
 
         .hero-sub {
-            font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+            font-size: clamp(1rem, 1.8vw, 1.15rem);
             color: var(--text-muted);
-            max-width: 640px;
+            max-width: 560px;
             font-weight: 300;
             margin-bottom: 2.5rem;
+        }
+
+        /* Emplacement Photo Coach à droite */
+        .hero-photo-placeholder {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            background-color: var(--bg-card);
+            border: 1px dashed var(--accent);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .hero-photo-placeholder::after {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: -10px;
+            bottom: -10px;
+            border: 1px solid var(--border-light);
+            z-index: -1;
+        }
+
+        .photo-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-style: italic;
+            color: var(--text-main);
+            margin-bottom: 0.4rem;
+        }
+
+        .photo-hint {
+            font-size: 0.72rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--text-muted);
         }
 
         .btn-primary {
@@ -462,7 +510,13 @@
         /* Responsive Mobile */
         @media (max-width: 768px) {
             .hero {
+                grid-template-columns: 1fr;
                 padding: 3.5rem 0 3rem;
+                gap: 2.5rem;
+            }
+            .hero-photo-placeholder {
+                aspect-ratio: 4 / 3;
+                max-width: 420px;
             }
             section {
                 padding: 3.5rem 0;
@@ -492,12 +546,19 @@
 
     <main class="container">
 
-        <!-- HERO -->
+        <!-- HERO (TEXTE À GAUCHE / PHOTO COACH À DROITE) -->
         <section class="hero">
-            <span class="eyebrow">Montréal & En Ligne — Certifié depuis 2013</span>
-            <h1>Fini les excuses. Reprenez le contrôle de votre <em>énergie</em> et de votre physique.</h1>
-            <p class="hero-sub">Un cadre d'entraînement structuré et sur-mesure pour les hommes d'expérience et entrepreneurs exigeants qui veulent des résultats durables, sans perdre de temps avec le hasard.</p>
-            <a href="#candidature" class="btn-primary">Déposer ma candidature</a>
+            <div class="hero-content">
+                <span class="eyebrow">Montréal & En Ligne — Certifié depuis 2013</span>
+                <h1>Fini les excuses. Reprenez le contrôle de votre <em>énergie</em> et de votre physique.</h1>
+                <p class="hero-sub">Un cadre d'entraînement structuré et sur-mesure pour les hommes d'expérience et entrepreneurs exigeants qui veulent des résultats durables, sans perdre de temps avec le hasard.</p>
+                <a href="#candidature" class="btn-primary">Déposer ma candidature</a>
+            </div>
+
+            <div class="hero-photo-placeholder">
+                <span class="photo-label">Votre photo ici</span>
+                <span class="photo-hint">Portrait du coach — Format vertical</span>
+            </div>
         </section>
 
         <!-- LE CONSTAT (BENTO GRID) -->
